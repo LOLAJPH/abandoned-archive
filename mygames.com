@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abandoned Files</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#000;
+    color:white;
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    overflow:hidden;
+}
+
+#container{
+    text-align:center;
+}
+
+button{
+    padding:18px 40px;
+    font-size:22px;
+    cursor:pointer;
+    border:none;
+    border-radius:8px;
+    background:#222;
+    color:white;
+}
+
+#jumpscare{
+    position:fixed;
+    inset:0;
+    background:black;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+#monster{
+    width:100vw;
+    height:100vh;
+    object-fit:cover;
+    animation:shake .05s infinite;
+}
+
+@keyframes shake{
+    0%{transform:translate(6px,-4px);}
+    25%{transform:translate(-6px,5px);}
+    50%{transform:translate(7px,-5px);}
+    75%{transform:translate(-5px,6px);}
+    100%{transform:translate(5px,-4px);}
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+<h1>Hidden Archive</h1>
+<p>Click below to reveal the classified image.</p>
+<br>
+<button onclick="start()">Open File</button>
+</div>
+
+<div id="jumpscare">
+<img
+id="monster"
+src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=1200"
+alt="Scary face">
+<audio id="scream" autoplay>
+<source src="https://www.soundjay.com/human/sounds/scream-01.mp3" type="audio/mpeg">
+</audio>
+</div>
+
+<script>
+function start(){
+
+    document.body.style.background="#111";
+
+    setTimeout(()=>{
+        document.getElementById("jumpscare").style.display="flex";
+
+        const audio=document.getElementById("scream");
+        audio.volume=1;
+        audio.play().catch(()=>{});
+    },4000);
+
+}
+</script>
+
+</body>
+</html>
